@@ -1,0 +1,30 @@
+services:
+  medicalclinic:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Postgres@5432
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres-clinic:5432/medical_clinic"
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+  postgres:
+    container_name: postgres-clinic
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Postgres@5432
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+networks:
+  postgres:
+    driver: bridge
+

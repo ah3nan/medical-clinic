@@ -1,0 +1,66 @@
+### Send POST request with json body
+POST http://localhost:8081/api/v1/users/
+Content-Type: application/json
+
+{
+  "username": "mido",
+  "password": "abc12345",
+  "passwordRepeat": "abc12345",
+  "firstName": "ahmed",
+  "lastName": "metwally",
+  "phoneNumber": "016566663"
+
+}
+
+### Send POST request with json body
+POST http://localhost:8081/api/v1/patients/
+Content-Type: application/json
+
+{
+  "mobilePhoneNumber": "5464525144",
+  "age": 50,
+  "address": "cairo",
+  "firstName": ",mohamed",
+  "lastName": "ibrahim"
+
+}
+
+
+### Send POST request with json body
+POST http://localhost:8081/api/v1/appointments/
+Content-Type: application/json
+
+{
+
+  "patient": {
+    "id" : 1
+  },
+  "appointmentDate": "2023-01-19",
+  "appointmentTime": "18:55"
+
+}
+
+### Send POST request with json body
+PATCH http://localhost:8081/api/v1/appointments/cancel
+Content-Type: application/json
+
+{
+  "id": 1,
+  "canceled": true,
+  "canceledReason":  "patient request"
+
+}
+###
+GET http://localhost:8081/api/v1/appointments/today
+Accept: application/json
+
+###
+GET http://localhost:8081/api/v1/appointments?dateFrom=2005-01-19&dateTo=2023-01-19&page=2
+Accept: application/json
+
+###
+GET http://localhost:8081/api/v1/appointments/patient/search?patientName=mohamed
+Accept: application/json
+###
+GET http://localhost:8081/api/v1/appointments/patient/1
+Accept: application/json
